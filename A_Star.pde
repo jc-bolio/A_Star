@@ -1,21 +1,20 @@
 int columns = 50; //<>//
 int rows = 50;
-float distance;
 int w;
 int h;
-Node currentNode;
-Node[][] grid = new Node[columns][rows];
-ArrayList<Node> path = new ArrayList();
+float distance;
 
+ArrayList<Node> path = new ArrayList();
 ArrayList<Node> openSet = new ArrayList();
 ArrayList<Node> closedSet = new ArrayList();
 
+Node currentNode;
+Node[][] grid = new Node[columns][rows];
 Node start;
 Node end;
 
 float heuristic(Node from, Node end) {
   distance = dist(from.getI(), from.getJ(), end.getI(), end.getJ());
-  //distance = abs(from.getI()-end.getI()) + abs(from.getJ()-end.getJ());
   return distance;
 }
 
@@ -56,12 +55,7 @@ void draw() {
     currentNode = openSet.get(lowestIndex);
 
     if (currentNode == end) {   
-      Node temp = currentNode;
-      path.add(temp);
-      while (temp.hasParent()) {
-        path.add(temp.getParent());
-        temp = temp.getParent();
-      }
+
       noLoop();
       print("Finished");
     }
@@ -109,15 +103,23 @@ void draw() {
     }
   }
 
-  for (int i = 0; i < closedSet.size(); i++) {
-    closedSet.get(i).show(color(255, 0, 0));
+  /*for (int i = 0; i < closedSet.size(); i++) {
+    closedSet.get(i).show(color(0, 0, 255));
   }
 
   for (int i = 0; i < openSet.size(); i++) {
     openSet.get(i).show(color(0, 255, 0));
+  }*/
+  
+  path.clear();
+  Node temp = currentNode;
+  path.add(temp);
+  while (temp.hasParent()) {
+    path.add(temp.getParent());
+    temp = temp.getParent();
   }
 
   for (int i = 0; i < path.size(); i++) {
-    path.get(i).show(color(0, 0, 255));
+    path.get(i).show(color(255, 0, 0));
   }
 }
