@@ -23,7 +23,7 @@ public class Node {
   }
 
   public boolean decideWall() {
-    if (random(1)<0.4)
+    if (random(1)<0.3)
       return true;
     else
       return false;

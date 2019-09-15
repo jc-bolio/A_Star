@@ -55,7 +55,6 @@ void draw() {
     currentNode = openSet.get(lowestIndex);
 
     if (currentNode == end) {   
-
       noLoop();
       print("Finished");
     }
@@ -102,14 +101,6 @@ void draw() {
       grid[i][j].show(color(255));
     }
   }
-
-  /*for (int i = 0; i < closedSet.size(); i++) {
-    closedSet.get(i).show(color(0, 0, 255));
-  }
-
-  for (int i = 0; i < openSet.size(); i++) {
-    openSet.get(i).show(color(0, 255, 0));
-  }*/
   
   path.clear();
   Node temp = currentNode;
